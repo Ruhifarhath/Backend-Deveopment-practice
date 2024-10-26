@@ -1,0 +1,24 @@
+{
+  "name": "backend-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ruhifarhath/Backend-Development-.git"
+  },
+  "author": "ruhi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ruhifarhath/Backend-Development-/issues"
+  },
+  "homepage": "https://github.com/Ruhifarhath/Backend-Development-#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
