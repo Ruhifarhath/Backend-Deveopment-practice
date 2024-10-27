@@ -14,6 +14,9 @@ app.get("/",function(req,res){
     res.render("index")
 })
 
+app.get("/:profile/:username/:age",(req,res)=>{
+    res.send(`Welcome ${req.params.username} ur age is ${req.params.age} `)
+})
 app.listen(3000,function(){
     console.log("its running")
 })
