@@ -1,22 +1,16 @@
 const express = require('express')
-const app = express()
+const app = express();
 const path= require('path')
 
-//helps us to use the form
-//parsers for the form
+app.set("view engine", "ejs")
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-app.use(express.static(path.join(__dirname,'publc')))
-//setting up ejs as view engine
-app.set('view engine','ejs')
+app.use(express.urlencoded({extended:true}))
+app.use(express.static(path.join(__dirname,"public")))
 
-app.get("/",function(req,res){
+app.get("/",(req,res)=>{
     res.render("index")
 })
 
-app.get("/:profile/:username/:age",(req,res)=>{
-    res.send(`Welcome ${req.params.username} ur age is ${req.params.age} `)
-})
-app.listen(3000,function(){
+app.listen(3000, (req,res)=>{
     console.log("its running")
 })
