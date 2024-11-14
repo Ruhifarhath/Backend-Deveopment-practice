@@ -21,11 +21,21 @@ app.get("/", (req, res) => {
 // to read the file when read more is clicked, 
 // utf-8 is mentioned as we want to reaf in english, without which it'll be in buffer
 app.get("/file/:filename", (req,res)=>{
-   fs.readFile(`./files/${req.params.filename}`, "utf-8",(err,filedata)=>{
-      res.render("show",{filename: req.params.filename, filedata: filedata})
-   })
-})
+    fs.readFile(`./files/${req.params.filename}`, "utf-8",(err,filedata)=>{
+       res.render("show",{filename: req.params.filename, filedata: filedata})
+    })
+ })
 
+ //for the edit feature
+ app.get("/edit/:filename", (req,res)=>{
+    res.render('edit',{filename: req.params.filename})
+ })
+
+ app.post('/edit',(req,res)=>{
+   fs.rename(`./files/${req.body.previous}`, `./files/${req.body.new}`,(err)=>{
+        res.redirect("/")
+   })
+ })
 app.post('/create', function (req, res) {
     // Use the correct 'title' field (not 'tile') from the form
     const fileName = req.body.title.split(' ').join('') + '.txt';  // Remove spaces in title
