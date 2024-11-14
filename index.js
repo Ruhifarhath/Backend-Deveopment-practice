@@ -18,11 +18,14 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get("/file/:file_name", (req,res)=>{
-   fs.readFile(`./files/${req.params.file_name}`, "utf-8",(err,filedata)=>{
-      console.log(filedata)
+// to read the file when read more is clicked, 
+// utf-8 is mentioned as we want to reaf in english, without which it'll be in buffer
+app.get("/file/:filename", (req,res)=>{
+   fs.readFile(`./files/${req.params.filename}`, "utf-8",(err,filedata)=>{
+      res.render("show",{filename: req.params.filename, filedata: filedata})
    })
 })
+
 app.post('/create', function (req, res) {
     // Use the correct 'title' field (not 'tile') from the form
     const fileName = req.body.title.split(' ').join('') + '.txt';  // Remove spaces in title
